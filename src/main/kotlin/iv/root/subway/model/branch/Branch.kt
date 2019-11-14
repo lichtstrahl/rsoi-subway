@@ -1,5 +1,6 @@
-package iv.root.subway.entity
+package iv.root.subway.model.branch
 
+import iv.root.subway.model.station.Station
 import java.io.Serializable
 import javax.persistence.*
 
@@ -14,5 +15,8 @@ data class Branch (
     @Column(name = "color", nullable = false)
     var color: String,
     @Column(name = "number", nullable = false)
-    var number: Int
+    var number: Int,
+// --------------------------
+    @OneToMany(mappedBy = "branch", orphanRemoval = true)
+    var stations: Set<Station>
 ): Serializable
